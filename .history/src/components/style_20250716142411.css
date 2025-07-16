@@ -1,0 +1,193 @@
+/* Root Container */
+.container-fluid {
+  background: #7a2fc0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #7a2fc0;
+  color: white;
+  padding: 16px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-bar h2 {
+  margin: 0;
+  font-size: clamp(18px, 2vw, 24px);
+}
+
+/* Waiter Card */
+.waiter-card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 18px 24px;
+  max-width: 900px;
+  width: 90%;
+  margin: -32px auto 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.waiter-name {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #7a2fc0;
+  font-weight: 600;
+}
+
+.waiter-role,
+.floor-label,
+.orders-count {
+  font-size: clamp(12px, 1.5vw, 16px);
+  color: #777;
+}
+
+.floor-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.order-red {
+  color: red;
+  font-weight: bold;
+}
+
+/* Table Section */
+.table-section {
+  background: #fff;
+  border-radius: 24px;
+  padding: 24px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  max-width: 960px;
+  width: 90%;
+  margin: 0 auto;
+  flex: 1;
+}
+
+/* Table Grid */
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* Table Buttons */
+.table-btn {
+  padding: 16px 0;
+  border-radius: 12px;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.table-btn.available {
+  color: green;
+  background-color: white;
+  border-color: green;
+}
+
+.table-btn.selected {
+  background-color: #7a2fc0;
+  color: white;
+  border-color: #7a2fc0;
+}
+
+.table-btn.occupied {
+  background-color: red;
+  color: white;
+  cursor: not-allowed;
+}
+
+.table-btn:active {
+  transform: scale(0.98);
+}
+
+/* Select Table Button */
+.select-btn {
+  margin-top: 24px;
+  width: 100%;
+  padding: 16px;
+  background-color: #7a2fc0;
+  color: white;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: bold;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.select-btn:hover {
+  background-color: #6926b2;
+}
+
+/* Legend Row */
+.legend-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: clamp(12px, 1.5vw, 16px);
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.green {
+  background-color: green;
+}
+
+.legend-dot.purple {
+  background-color: purple;
+}
+
+.legend-dot.red {
+  background-color: red;
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+  .waiter-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .table-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .header-bar h2 {
+    font-size: 18px;
+  }
+}

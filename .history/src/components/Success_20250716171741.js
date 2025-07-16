@@ -1,0 +1,43 @@
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import { updateTableStatus } from '../services/api';
+import { FaArrowLeft, FaFilter } from 'react-icons/fa';
+import './success.css';
+
+function Success({ history, location }) {
+  const tableId = location.state?.tableId;
+
+  useEffect(() => {
+    if (tableId) {
+      updateTableStatus(tableId, { status: 'available' })
+        .then(() => console.log(`Table ${tableId} marked available ✅`))
+        .catch(err => console.error('Failed to update table status:', err));
+    }
+  }, [tableId]);
+
+  return (
+    <div className="success-page">
+      {/* ✅ Fixed Header */}
+      <div className="header-bar">
+        <FaArrowLeft className="icon" onClick={() => history.push('/')} />
+        <h2 className="header-h2">GenX Cafe</h2>
+        <FaFilter className="icon" />
+      </div>
+
+      {/* ✅ Main Body */}
+      <main className="success-body">
+        <div className="checkmark-circle">
+          <div className="checkmark" />
+        </div>
+        <h2>Your order is completed successfully</h2>
+      </main>
+
+      {/* ✅ Fixed Footer Button */}
+      <button className="footer-btn" onClick={() => history.push('/')}>
+        Book Table
+      </button>
+    </div>
+  );
+}
+
+export default withRouter(Success);

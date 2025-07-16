@@ -1,0 +1,107 @@
+/* Container for Success Page */
+.success-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px; /* space for header */
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Header Bar */
+.header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #7a2fc0;
+  color: white ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.header-bar h2 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 20px;
+   color: white !important ;
+
+}
+
+.icon {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Checkmark Animation */
+.checkmark-circle {
+  width: 160px;
+  height: 160px;
+  background-color: #7a2fc0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto 20px;
+  animation: popCircle 0.5s ease-out;
+}
+
+.checkmark {
+  width: 30px;
+  height: 60px;
+  border-right: 6px solid white;
+  border-bottom: 6px solid white;
+  transform: rotate(45deg) scale(0);
+  animation: drawCheck 0.4s 0.3s ease forwards;
+}
+
+@keyframes popCircle {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes drawCheck {
+  to {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+/* Success Message */
+.success-page h2 {
+  font-size: 18px;
+  margin-top: 12px;
+  color: #000000;
+}
+
+/* Fixed Bottom Button */
+.footer-btn {
+  
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: ;
+  background-color: #7a2fc0;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

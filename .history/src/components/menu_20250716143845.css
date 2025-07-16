@@ -1,0 +1,119 @@
+
+/* menu */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.container {
+  padding: 16px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.menu-card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.menu-card.selected {
+  border: 2px solid #7a2fc0;
+  background-color: #f3e8ff;
+}
+
+.menu-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.menu-card h4 {
+  margin: 8px 0 4px;
+  font-size: 16px;
+  color: #333;
+}
+
+.menu-card .desc {
+  font-size: 12px;
+  color: #777;
+  height: 32px;
+  overflow: hidden;
+}
+
+.menu-card button {
+  background-color: #7a2fc0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-top: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.menu-card button:hover {
+  background-color: #6920a4;
+}
+
+.footer-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #7a2fc0;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.footer-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.waiter-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px 20px;
+  margin-top: 16px;
+  margin-bottom: 24px; /* 🔹 This creates the space above menu-grid */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.waiter-name {
+  color: #7a2fc0;
+  font-weight: bold;
+}
+
+.waiter-role {
+  font-size: 13px;
+  color: #777;
+}
+
+.floor-label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.orders-count {
+  font-size: 13px;
+  color: #777;
+}
+
+.order-red {
+  color: red;
+  font-weight: bold;
+}

@@ -1,0 +1,54 @@
+.success-wrapper {
+  background-color: #7a2fc0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.confirmation-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  text-align: center;
+}
+
+.checkmark-circle {
+  width: 160px;
+  height: 160px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  animation: popCircle 0.5s ease-out;
+}
+
+.checkmark {
+  width: 30px;
+  height: 60px;
+  border-right: 6px solid #7a2fc0;
+  border-bottom: 6px solid #7a2fc0;
+  transform: rotate(45deg) scale(0);
+  animation: drawCheck 0.4s 0.3s ease forwards;
+}
+
+@keyframes popCircle {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes drawCheck {
+  to { transform: rotate(45deg) scale(1); }
+}
+
+.success-message {
+  font-size: 18px;
+  color: white;
+  max-width: 300px;
+  margin-top: 12px;
+}

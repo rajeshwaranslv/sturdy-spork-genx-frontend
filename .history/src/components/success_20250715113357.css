@@ -1,0 +1,58 @@
+ 
+
+ 
+.checkmark-circle {
+  width: 160px;
+  height: 160px;
+  margin: 40px 0 20px;
+  border-radius: 50%;
+  background-color: #7a2fc0;
+  position: relative;
+  animation: popCircle 0.5s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkmark {
+  width: 30px;
+  height: 60px;
+  border-right: 5px solid white;
+  border-bottom: 5px solid white;
+  transform: rotate(45deg) scale(0);
+  animation: drawCheck 0.4s 0.3s ease forwards;
+}
+
+@keyframes popCircle {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes drawCheck {
+  to {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.footer-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background-color: #7a2fc0;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+}

@@ -1,0 +1,29 @@
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.item-info p {
+  margin-top: 4px;
+  color: #666;
+}
+
+.status-label {
+  font-size: 13px;
+  margin-top: 4px;
+  display: block;
+}
+
+.status-label.served {
+  color: green;
+  font-weight: bold;
+}
+
+.status-label.ordered {
+  color: orange;
+  font-weight: bold;
+}

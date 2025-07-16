@@ -1,0 +1,209 @@
+/* Container Setup */
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #7a2fc0;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Header Bar */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #7a2fc0;
+  color: white;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-bar h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Icons */
+.icon {
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Waiter Info Card */
+.waiter-card {
+  background-color: white;
+  border-radius: 20px 20px 10px 10px;
+  margin: -20px 16px 12px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.waiter-left .waiter-name {
+  font-weight: bold;
+  font-size: 15px;
+  color: #7a2fc0;
+}
+
+.waiter-role {
+  font-size: 12px;
+  color: #777;
+  margin-top: 2px;
+}
+
+.floor-label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.orders-count {
+  font-size: 13px;
+  color: #333;
+}
+
+.order-red {
+  color: red;
+  font-weight: bold;
+}
+
+/* Legend Row */
+.legend-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #555;
+  background: white;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-dot.green {
+  background-color: green;
+}
+
+.legend-dot.purple {
+  background-color: purple;
+}
+
+.legend-dot.red {
+  background-color: red;
+}
+
+/* Table Section */
+.table-section {
+  background-color: white;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 16px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Table Grid */
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* Table Buttons */
+.table-btn {
+  padding: 16px 0;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 14px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+  transition: 0.2s;
+  word-break: break-word;
+}
+
+.table-btn.available {
+  background-color: white;
+  color: green;
+  border: 2px solid green;
+}
+
+.table-btn.available:hover {
+  background-color: #f0fff0;
+}
+
+.table-btn.selected {
+  background-color: purple;
+  color: white;
+  border-color: purple;
+}
+
+.table-btn.occupied {
+  background-color: red;
+  color: white;
+  cursor: not-allowed;
+}
+
+/* Select Table Button */
+.select-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 24px;
+  background-color: #7a2fc0;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.select-btn:hover {
+  background-color: #6926b2;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 480px) {
+  .waiter-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .legend-row {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 12px;
+    gap: 12px;
+  }
+
+  .table-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .table-btn {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}

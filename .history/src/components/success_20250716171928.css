@@ -1,0 +1,68 @@
+/* Keep existing styles and add these if missing */
+
+.success-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 140px;  /* header + waiter card space */
+  padding-bottom: 100px; /* footer button */
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f8f8f8;
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+}
+
+/* ✅ Waiter Card */
+.waiter-card {
+  position: absolute;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  padding: 14px 20px;
+  width: 92%;
+  max-width: 380px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.waiter-name {
+  color: #7a2fc0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.waiter-role {
+  font-size: 13px;
+  color: #777;
+}
+
+.floor-label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.orders-count {
+  font-size: 13px;
+  color: #777;
+}
+
+.order-red {
+  color: red;
+  font-weight: bold;
+}
+
+.success-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
