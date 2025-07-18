@@ -1,0 +1,164 @@
+import React, { useEffect, useState } from 'react';
+import { getTables, getOrder, getFoodItems } from '../services/api';
+import { withRouter } from 'react-router-dom';
+import { FaArrowLeft, FaFilter } from 'react-icons/fa';
+import { Dropdown, Checkbox, Menu } from 'antd';
+import './style.css';
+
+function TableSelection({ history }) {
+  const [tables, setTables] = useState([]);
+  const [selectedTableId, setSelectedTableId] = useState(null);
+  const [orders, setOrders] = useState([]);
+  const [menu, setMenu] = useState([]);
+  const [filter, setFilter] = useState({
+    available: true,
+    selected: true,
+    occupied: true,
+  });
+
+  const waiter = {
+    name: 'John Williams',
+    role: 'Waiter',
+    floor: 'Ground Floor',
+  };
+
+  useEffect(() => {
+    // Fetch all data in parallel
+    Promise.all([getTables(), getOrders(), getFoodItems()])
+      .then(([tablesRes, ordersRes, menuRes]) => {
+        setTables(tablesRes.data);
+        setOrders(ordersRes.data);
+        setMenu(menuRes.data);
+      })
+      .catch((err) => console.error('Failed to fetch data', err));
+  }, []);
+
+  const handleTableClick = (id, status) => {
+    if (status === 'available') {
+      setSelectedTableId(id === selectedTableId ? null : id);
+    }
+  };
+
+  const handleSelectTable = () => {
+    if (selectedTableId) {
+      history.push(`/menu/${selectedTableId}`);
+    }
+  };
+
+  // ✅ Calculate Total Order Value
+  const totalOrderValue = orders.reduce((total, order) => {
+    return (
+      total +
+      order.items.reduce((sum, item) => {
+        const menuItem = menu.find((m) => m.id === item.menuId);
+        return sum + (menuItem ? menuItem.price * item.quantity : 0);
+      }, 0)
+    );
+  }, 0);
+
+  // ✅ Filter dropdown menu
+  const filterMenu = (
+    <Menu>
+      <Menu.Item>
+        <Checkbox
+          checked={filter.available}
+          onChange={(e) => setFilter({ ...filter, available: e.target.checked })}
+        >
+          Available
+        </Checkbox>
+      </Menu.Item>
+      <Menu.Item>
+        <Checkbox
+          checked={filter.selected}
+          onChange={(e) => setFilter({ ...filter, selected: e.target.checked })}
+        >
+          Selected
+        </Checkbox>
+      </Menu.Item>
+      <Menu.Item>
+        <Checkbox
+          checked={filter.occupied}
+          onChange={(e) => setFilter({ ...filter, occupied: e.target.checked })}
+        >
+          Not Available
+        </Checkbox>
+      </Menu.Item>
+    </Menu>
+  );
+
+  return (
+    <div className="container-fluid">
+      {/* ✅ Header */}
+      <div className="header-bar">
+        <FaArrowLeft className="icon" onClick={() => history.goBack()} />
+        <h2>GenX Cafe</h2>
+        <Dropdown overlay={filterMenu} trigger={['click']}>
+          <FaFilter className="icon" style={{ cursor: 'pointer', marginLeft: 'auto' }} />
+        </Dropdown>
+      </div>
+
+      {/* ✅ Waiter Card */}
+      <div className="waiter-card">
+        <div className="waiter-left">
+          <strong className="waiter-name">{waiter.name}</strong>
+          <div className="waiter-role">Role: {waiter.role}</div>
+        </div>
+        <div className="waiter-right">
+          <div className="floor-label">{waiter.floor}</div>
+          <div className="orders-count">
+            ₹{totalOrderValue.toLocaleString()} /- Total Value
+          </div>
+        </div>
+      </div>
+
+      {/* ✅ Table Section */}
+      <div className="table-section">
+        <div className="legend-row">
+          <div className="legend-item"><span className="legend-dot green" /> Available</div>
+          <div className="legend-item"><span className="legend-dot purple" /> Selected</div>
+          <div className="legend-item"><span className="legend-dot red" /> Not - Available</div>
+        </div>
+
+        <div className="table-grid">
+          {tables.map((table) => {
+            const isSelected = selectedTableId === table.id;
+            const statusClass = isSelected
+              ? 'selected'
+              : table.status === 'available'
+              ? 'available'
+              : 'occupied';
+
+            if (
+              (statusClass === 'available' && !filter.available) ||
+              (statusClass === 'selected' && !filter.selected) ||
+              (statusClass === 'occupied' && !filter.occupied)
+            ) {
+              return null;
+            }
+
+            return (
+              <button
+                key={table.id}
+                className={`table-btn ${statusClass}`}
+                onClick={() => handleTableClick(table.id, table.status)}
+                disabled={table.status === 'occupied'}
+              >
+                Table {table.id.toString().padStart(2, '0')}
+              </button>
+            );
+          })}
+        </div>
+
+        <button
+          className="select-btn"
+          onClick={handleSelectTable}
+          disabled={!selectedTableId}
+        >
+          Select Table
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default withRouter(TableSelection);

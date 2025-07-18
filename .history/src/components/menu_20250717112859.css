@@ -1,0 +1,41 @@
+.menu-card {
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  background: white;
+  border: 2px solid green;
+  transition: all 0.3s ease;
+  min-width: 160px;
+  max-width: 180px;
+}
+
+/* Hover effect */
+.menu-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(122, 47, 192, 0.3);
+  border-color: #7a2fc0;
+}
+
+/* Selected card */
+.menu-card.selected {
+  background-color: #7a2fc0;
+  color: white;
+  border-color: #7a2fc0;
+}
+
+.menu-card.selected h4,
+.menu-card.selected .desc,
+.menu-card.selected p {
+  color: white;
+}
+
+.menu-card.selected button.mini-btn {
+  background-color: white;
+  color: #7a2fc0;
+}
+
+.menu-card.selected button.mini-btn:hover {
+  background-color: #ddd;
+  color: #7a2fc0;
+}
